@@ -1,0 +1,11 @@
+services:
+  mysql:
+    container_name: 'fakeAPiDB'
+    image: 'mysql:latest'
+    environment:
+      - 'MYSQL_DATABASE=fakeAPiDB'
+      - 'MYSQL_PASSWORD=fakepassword'
+      - 'MYSQL_ROOT_PASSWORD=fakepassword'
+      - 'MYSQL_USER=user1'
+    ports:
+      - '3306:3306'
