@@ -1,21 +1,28 @@
-package com.salim.FakeAPI.Models;
+package com.salim.FakeAPI.DTO.RequestDTO;
 
-import java.util.List;
+
+import org.springframework.stereotype.Component;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Stats {
+@Builder
+@Component
+public class StatsRequestDTO {
+    
+    Long userId;
     long win;
     long loss;
+
     int rank;
     String league;
     String nextLeague;
     int progressBar;
-    List<GraphStats> graph;
+    // List<GraphStats> graph;
+
 }

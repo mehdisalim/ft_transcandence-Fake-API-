@@ -1,4 +1,4 @@
-package com.salim.FakeAPI.Models;
+package com.salim.FakeAPI.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
