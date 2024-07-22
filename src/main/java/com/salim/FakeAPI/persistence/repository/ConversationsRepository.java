@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.salim.FakeAPI.persistence.entity.Conversations;
+import com.salim.FakeAPI.persistence.entity.chat.Conversations;
 
 @Repository
 public interface ConversationsRepository extends JpaRepository<Conversations, Long>{

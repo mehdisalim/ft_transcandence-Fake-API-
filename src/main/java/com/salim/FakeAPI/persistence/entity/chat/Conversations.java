@@ -1,4 +1,4 @@
-package com.salim.FakeAPI.persistence.entity;
+package com.salim.FakeAPI.persistence.entity.chat;
 
 import jakarta.annotation.Generated;
 import jakarta.persistence.Column;

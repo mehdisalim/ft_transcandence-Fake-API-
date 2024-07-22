@@ -4,12 +4,13 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import com.salim.FakeAPI.DTO.RequestDTO.ConversationsRequestDTO;
+import com.salim.FakeAPI.DTO.RequestDTO.UserRequestDTO;
 import com.salim.FakeAPI.DTO.ResponseDTO.ConversationsResponseDTO;
 import com.salim.FakeAPI.DTO.ResponseDTO.StatsResponseDTO;
 import com.salim.FakeAPI.DTO.ResponseDTO.UserResponseDTO;
-import com.salim.FakeAPI.persistence.entity.Conversations;
 import com.salim.FakeAPI.persistence.entity.Stats;
 import com.salim.FakeAPI.persistence.entity.User;
+import com.salim.FakeAPI.persistence.entity.chat.Conversations;
 
 public class Convertor {
 
@@ -26,6 +27,26 @@ public class Convertor {
                 .friend(user.isFriend())
                 .gender(user.getGender())
                 .joinDate(user.getJoinDate())
+                .profileImage(user.getProfileImage())
+                .build();
+    }
+    
+    public static User convertUserRequestDTOToUser(final UserRequestDTO user) {
+        LocalDateTime myDateObj = LocalDateTime.now();
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss:ms");
+
+        String formattedDate = myDateObj.format(myFormatObj);
+        return User.builder()
+                .fullName(user.getFullName())
+                .userName(user.getUserName())
+                .active(user.isActive())
+                .birthday(user.getBirthday())
+                .phone(user.getPhone())
+                .cover(user.getCover())
+                .email(user.getEmail())
+                .friend(user.isFriend())
+                .gender(user.getGender())
+                .joinDate(formattedDate)
                 .profileImage(user.getProfileImage())
                 .build();
     }
@@ -53,8 +74,6 @@ public class Convertor {
         DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss:ms");
 
         String formattedDate = myDateObj.format(myFormatObj);
-
-        System.out.println("formattedDate : " + formattedDate);
         
         return Conversations.builder()
                         .message(conv.getMessage())

@@ -25,8 +25,6 @@ public class UserRequestDTO {
     String gender;
 
     String birthday;
-    
-    String joinDate;
 
     boolean active;
     boolean friend;

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.salim.FakeAPI.DTO.RequestDTO.UserRequestDTO;
 import com.salim.FakeAPI.DTO.ResponseDTO.UserResponseDTO;
 import com.salim.FakeAPI.persistence.entity.Stats;
 import com.salim.FakeAPI.persistence.entity.User;
@@ -56,9 +57,8 @@ public class UserEndPoint {
     }
 
     @PostMapping("adduser")
-    public String addUser(@RequestBody User user) {
-        log.info(user.toString());
-        return userService.addUser(user) ? "the use was added succesfully." : "error ";
+    public String addUser(@RequestBody UserRequestDTO user) {
+        return userService.addUser(Convertor.convertUserRequestDTOToUser(user)) ? "the use was added succesfully." : "error ";
     }
 
 }

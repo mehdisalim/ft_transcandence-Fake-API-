@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.salim.FakeAPI.DTO.RequestDTO.ConversationsRequestDTO;
-import com.salim.FakeAPI.persistence.entity.Conversations;
+import com.salim.FakeAPI.persistence.entity.chat.Conversations;
 import com.salim.FakeAPI.persistence.repository.ConversationsRepository;
 import com.salim.FakeAPI.utils.Convertor;
 
