@@ -1,7 +1,13 @@
 package com.salim.FakeAPI.utils;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+import com.salim.FakeAPI.DTO.RequestDTO.ConversationsRequestDTO;
+import com.salim.FakeAPI.DTO.ResponseDTO.ConversationsResponseDTO;
 import com.salim.FakeAPI.DTO.ResponseDTO.StatsResponseDTO;
 import com.salim.FakeAPI.DTO.ResponseDTO.UserResponseDTO;
+import com.salim.FakeAPI.persistence.entity.Conversations;
 import com.salim.FakeAPI.persistence.entity.Stats;
 import com.salim.FakeAPI.persistence.entity.User;
 
@@ -28,5 +34,33 @@ public class Convertor {
         return StatsResponseDTO.builder().id(stats.getId()).league(stats.getLeague()).loss(stats.getLoss())
                 .nextLeague(stats.getNextLeague()).progressBar(stats.getProgressBar()).rank(stats.getRank())
                 .userId(stats.getUserId()).win(stats.getWin()).build();
+    }
+
+
+
+    public static ConversationsResponseDTO convertConversationToConversationsResponseDTO(Conversations conv) {
+        return ConversationsResponseDTO.builder()
+                        .id(conv.getId())
+                        .message(conv.getMessage())
+                        .receiverId(conv.getReceiverId())
+                        .senderId(conv.getSenderId())
+                        .time(conv.getTime())
+                        .build();
+    }
+    
+    public static Conversations convertConversationsRequestDTOToConversations(ConversationsRequestDTO conv) {
+        LocalDateTime myDateObj = LocalDateTime.now();
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss:ms");
+
+        String formattedDate = myDateObj.format(myFormatObj);
+
+        System.out.println("formattedDate : " + formattedDate);
+        
+        return Conversations.builder()
+                        .message(conv.getMessage())
+                        .receiverId(conv.getReceiverId())
+                        .senderId(conv.getSenderId())
+                        .time(formattedDate)
+                        .build();
     }
 }

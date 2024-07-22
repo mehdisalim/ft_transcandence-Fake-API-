@@ -49,7 +49,9 @@ public class UserEndPoint {
     public UserResponseDTO getUserById(@PathVariable("id") Long id) {
         User u = userService.getUserById(id).get();
         UserResponseDTO response = Convertor.convertUserToUserResponseDTO(u);
-        response.setStats(Convertor.convertStatsToStatsResponseDTO(statsService.getStatsByUserId(id).get()));
+        Optional<Stats> stats = statsService.getStatsByUserId(u.getId());
+        if (stats.isPresent())
+            response.setStats(Convertor.convertStatsToStatsResponseDTO(stats.get()));
         return response;
     }
 
