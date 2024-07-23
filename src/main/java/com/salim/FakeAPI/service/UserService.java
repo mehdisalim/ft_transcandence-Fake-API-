@@ -28,4 +28,12 @@ public class UserService {
     public boolean addUser(final User user) {
         return userRepo.save(user) != null;
     }
+
+    public List<User> addUsers(final List<User> users) {
+        return userRepo.saveAllAndFlush(users);
+    }
+
+    public void deleteAll() {
+        userRepo.deleteAll();
+    }
 }

@@ -47,5 +47,12 @@ public class StatsEndPoints {
         log.warn(stats.toString());
         return statsService.addStats(stats) ? "the use was added succesfully." : "error ";
     }
+    
+    @PostMapping("addlistofstats")
+    public String addListOfStats(@RequestBody List<Stats> stats) {
+        log.warn(stats.toString());
+        return statsService.addListOfStats(stats) ? "the use was added succesfully." : "error ";
+    }
+    
 
 }

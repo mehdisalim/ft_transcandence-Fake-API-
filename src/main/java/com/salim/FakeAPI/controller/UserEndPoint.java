@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -59,6 +60,17 @@ public class UserEndPoint {
     @PostMapping("adduser")
     public String addUser(@RequestBody UserRequestDTO user) {
         return userService.addUser(Convertor.convertUserRequestDTOToUser(user)) ? "the use was added succesfully." : "error ";
+    }
+    
+    @PostMapping("addusers")
+    public String addUsers(@RequestBody List<UserRequestDTO> users) {
+        int size = userService.addUsers(users.stream().map(Convertor::convertUserRequestDTOToUser).toList()).size();
+        return size != 0 ? "the use was added succesfully. size = " + size : "error ";
+    }
+
+    @DeleteMapping("deleteall")
+    public void deleteAll() {
+        userService.deleteAll();
     }
 
 }

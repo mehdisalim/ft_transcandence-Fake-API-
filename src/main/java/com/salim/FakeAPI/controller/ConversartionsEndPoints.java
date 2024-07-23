@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.salim.FakeAPI.DTO.RequestDTO.ConversationsRequestDTO;
 import com.salim.FakeAPI.DTO.ResponseDTO.ConversationsResponseDTO;
-import com.salim.FakeAPI.service.ConversationsService;
+import com.salim.FakeAPI.service.chat.ConversationsService;
 import com.salim.FakeAPI.utils.Convertor;
 
 import jakarta.websocket.server.PathParam;
@@ -15,12 +15,15 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 
+@CrossOrigin
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("api/v1/conversations")
@@ -43,6 +46,16 @@ public class ConversartionsEndPoints {
     @PostMapping("addconversation")
     public ConversationsResponseDTO addConversationToTable(@RequestBody ConversationsRequestDTO body) {
         return Convertor.convertConversationToConversationsResponseDTO(service.addConversationToTable(body));
+    }
+   
+    @PostMapping("addlist")
+    public List<ConversationsResponseDTO> addConversationToTable(@RequestBody List<ConversationsRequestDTO> body) {
+        return service.addlist(body).stream().map(Convertor::convertConversationToConversationsResponseDTO).toList();
+    }
+
+    @DeleteMapping("/deleteall")
+    public void deleteall() {
+        service.deleteall();
     }
 
 }

@@ -35,4 +35,8 @@ public class StatsService {
         return statsRepo.save(stats) != null;
     }
 
+    public boolean addListOfStats(final List<Stats> stats) {
+        return !statsRepo.saveAll(stats).isEmpty();
+    }
+
 }

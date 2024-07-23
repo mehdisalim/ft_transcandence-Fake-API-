@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -34,6 +35,7 @@ public class User {
     }
     
     @Id
+    @SequenceGenerator(name = "user_seq", sequenceName = "user_seq", allocationSize = 1)
     @GeneratedValue( strategy = GenerationType.SEQUENCE)
     Long id;
 
@@ -58,7 +60,7 @@ public class User {
     String cover;
 
     
-    // Stats stats;
+    // Long statsId;
     // List<Links> links;
 
     // List<Achievements> achievements;

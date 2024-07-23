@@ -1,4 +1,4 @@
-package com.salim.FakeAPI.persistence.repository;
+package com.salim.FakeAPI.persistence.repository.chat;
 
 import java.util.List;
 
