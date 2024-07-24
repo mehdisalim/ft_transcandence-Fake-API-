@@ -20,8 +20,12 @@ public class ChatItemService {
         return repo.findAll();
     }
 
-    public Optional<ChatItem> getChatItemById(Long id) {
-        return repo.findById(id);
+    public List<ChatItem> getChatItemsById(Long id) {
+        return repo.findByUserId(id);
+    }
+    
+    public Optional<ChatItem> getChatItemByTaregetId(Long userId, Long targetId) {
+        return repo.findByUserIdAndTargetId(userId, targetId);
     }
     
     public ChatItem addItem(ChatItem item) {

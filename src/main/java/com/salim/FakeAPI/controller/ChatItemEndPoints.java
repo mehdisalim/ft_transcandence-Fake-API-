@@ -29,8 +29,13 @@ public class ChatItemEndPoints {
     }
 
     @GetMapping("{id}")
-    public ChatItem getChatItemById(@PathVariable("id") Long id) {
-        return service.getChatItemById(id).get();
+    public List<ChatItem> getChatItemsById(@PathVariable("id") Long id) {
+        return service.getChatItemsById(id);
+    }
+    
+    @GetMapping("user={userid}&target={targetid}")
+    public ChatItem getChatItemByTaregetId(@PathVariable("userid") Long userid, @PathVariable("targetid") Long targetid) {
+        return service.getChatItemByTaregetId(userid, targetid).get();
     }
 
 
