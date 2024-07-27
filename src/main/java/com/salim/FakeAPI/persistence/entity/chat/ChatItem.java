@@ -38,3 +38,13 @@ public class ChatItem {
     }
     
 }
+
+
+// {
+//     id: 9,
+//     userId: 1,
+//     targetUserId: 3,
+//     lastMessage: "hello test ...",
+//     time: "12:08 PM",
+//     numberOfMessage: 12
+// }
